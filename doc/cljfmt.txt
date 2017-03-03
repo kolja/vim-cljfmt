@@ -45,6 +45,10 @@ current buffer when you save. If you want to turn this off, add the
 following to your .vimrc:
   let g:clj_fmt_autosave = 0
 
+* vim-cljfmt will respect your cljfmt config-options if they are located
+ in *~/.lein/profiles.clj*
+ Otherwise, you can specify where to look for them:
+  let g:clj_fmt_config_dir = <config-dir> (relative to $HOME)
 ==============================================================================
 COMMANDS                                                   *cljfmt-commands*
 

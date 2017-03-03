@@ -33,7 +33,8 @@ function! s:GetCurrentBufferContents()
 endfunction
 
 function! s:GetReformatString(CurrentBufferContents)
-    return '(print (cljfmt.core/reformat-string "' . a:CurrentBufferContents . '" nil))'
+    let l:config_dir = exists("g:clj_fmt_config_dir") ? g:clj_fmt_config_dir : '.lein/profiles.clj'
+    return '(print (cljfmt.core/reformat-string "' . a:CurrentBufferContents . '" (get-in (read-string (slurp (str (System/getProperty "user.home") "/' . l:config_dir . '"))) [:user :cljfmt])))'
 endfunction
 
 function! s:FilterOutput(lines)
